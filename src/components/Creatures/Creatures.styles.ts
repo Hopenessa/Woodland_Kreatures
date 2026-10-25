@@ -62,9 +62,10 @@ export const ImageButton = styled.button`
     outline-offset: -5px;
   }
 `;
-export const Image = styled.img<{ $position: string }>`
+export const Image = styled.img<{ $position: string; $fit: "cover" | "contain" }>`
   height: clamp(240px, min(30vw, 40svh), 440px);
-  object-fit: cover;
+  object-fit: ${({ $fit }) => $fit};
+  background: #072c22;
   object-position: ${({ $position }) => $position};
   border: 1px solid #ddd5b9;
   @media (max-width: 600px) {

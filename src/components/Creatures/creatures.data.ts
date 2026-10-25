@@ -5,7 +5,19 @@ import cameo from "../../assets/images/creatures/Cameo.webp";
 import gelsey from "../../assets/images/creatures/Gelsey.webp";
 import kaida from "../../assets/images/creatures/Kaida.webp";
 
-export const creatures = [
+import flannery from "../../assets/images/creatures/Flannery.webp";
+import aristotleAndSkye from "../../assets/images/creatures/Aristotle_and_Skye.webp";
+
+export type Creature = {
+  id: string;
+  name: string;
+  image: string;
+  position: string;
+  alt: string;
+  fit?: "cover" | "contain";
+};
+
+export const creatures: Creature[] = [
   {
     id: "wispa",
     name: "Wispa",
@@ -48,5 +60,18 @@ export const creatures = [
     position: "50% 45%",
     alt: "Kaida, a small handmade green dragon with purple wings and a little brown hat, sitting on moss",
   },
+  {
+    id: "flannery",
+    name: "Flannery",
+    image: flannery,
+    position: "50% 18%",
+    alt: "Flannery, a handmade golden dragon with little horns, purple wings and a large dark key, sitting on moss",
+  },
+  {
+    id: "aristotle-and-skye",
+    name: "Aristotle and Skye",
+    image: aristotleAndSkye,
+    position: "72% 35%",
+    alt: "Aristotle and Skye, a purple-haired handmade fairy sitting on a pearly pink dragon with translucent purple wings",
+  },
 ];
-export type Creature = (typeof creatures)[number];

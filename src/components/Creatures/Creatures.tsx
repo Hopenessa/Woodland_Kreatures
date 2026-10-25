@@ -192,6 +192,7 @@ export default function Creatures() {
                       src={creature.image}
                       alt={creature.alt}
                       $position={creature.position}
+                      $fit={creature.fit ?? "cover"}
                       loading="lazy"
                       draggable={false}
                     />
