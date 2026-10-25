@@ -3,7 +3,8 @@ import { Container } from "../Shared/Container";
 import { LinkButton } from "../Shared/Button";
 import ShopLink from "../Shared/ShopLink";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { creatures } from "./creatures.data";
+import { creatures, type Creature } from "./creatures.data";
+import ImageViewer from "./ImageViewer/ImageViewer";
 import {
   CreaturesSection,
   Title,
@@ -14,6 +15,7 @@ import {
   Track,
   Card,
   Image,
+  ImageButton,
   Name,
   Arrow,
   Controls,
@@ -29,6 +31,8 @@ const slides = [
 ];
 
 export default function Creatures() {
+  const [selected, setSelected] = useState<Creature | null>(null);
+  const opener = useRef<HTMLButtonElement | null>(null);
   const [slide, setSlide] = useState({ index: CLONES, animated: false });
   const [inView, setInView] = useState(false);
   const [pageVisible, setPageVisible] = useState(!document.hidden);
@@ -88,19 +92,19 @@ export default function Creatures() {
   }, []);
 
   useEffect(() => {
-    if (
-      !inView ||
-      !pageVisible ||
-      reducedMotion
-    )
-      return;
+    if (selected || !inView || !pageVisible || reducedMotion) return;
     const timer = window.setInterval(() => {
       const gallery = galleryRef.current;
-      if (!gallery || gallery.matches(":hover") || gallery.contains(document.activeElement)) return;
+      if (
+        !gallery ||
+        gallery.matches(":hover") ||
+        gallery.contains(document.activeElement)
+      )
+        return;
       move(1);
     }, SLIDE_INTERVAL);
     return () => window.clearInterval(timer);
-  }, [inView, pageVisible, reducedMotion, move]);
+  }, [selected, inView, pageVisible, reducedMotion, move]);
 
   useEffect(() => {
     if (!slide.animated) return;
@@ -119,7 +123,17 @@ export default function Creatures() {
         </Introduction>
         <Gallery
           ref={galleryRef}
-          data-playback={reducedMotion ? "reduced-motion" : !pageVisible ? "background" : !inView ? "offscreen" : "playing"}
+          data-playback={
+            selected
+              ? "viewing"
+              : reducedMotion
+                ? "reduced-motion"
+                : !pageVisible
+                  ? "background"
+                  : !inView
+                    ? "offscreen"
+                    : "playing"
+          }
           role="region"
           aria-label="Woodland creatures gallery"
           aria-roledescription="carousel"
@@ -159,14 +173,29 @@ export default function Creatures() {
                     index < slide.index || index >= slide.index + visibleCount
                   }
                 >
-                  <Image
-                    src={creature.image}
-                    alt={creature.alt}
-                    width="560"
-                    height="650"
-                    loading="eager"
-                    draggable={false}
-                  />
+                  <ImageButton
+                    type="button"
+                    data-creature-id={creature.id}
+                    aria-label={`View ${creature.name} photograph`}
+                    aria-haspopup="dialog"
+                    tabIndex={
+                      index >= slide.index && index < slide.index + visibleCount
+                        ? 0
+                        : -1
+                    }
+                    onClick={(event) => {
+                      opener.current = event.currentTarget;
+                      setSelected(creature);
+                    }}
+                  >
+                    <Image
+                      src={creature.image}
+                      alt={creature.alt}
+                      $position={creature.position}
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  </ImageButton>
                   <Name>{creature.name}</Name>
                 </Card>
               ))}
@@ -191,6 +220,19 @@ export default function Creatures() {
           <LinkButton as={ShopLink}>Visit the shop</LinkButton>
         </Controls>
       </Container>
+      {selected && (
+        <ImageViewer
+          creature={selected}
+          onClose={() => {
+            setSelected(null);
+            const visibleOpener =
+              galleryRef.current?.querySelector<HTMLButtonElement>(
+                `button[data-creature-id="${selected.id}"][tabindex="0"]`,
+              );
+            (visibleOpener ?? opener.current)?.focus({ preventScroll: true });
+          }}
+        />
+      )}
     </CreaturesSection>
   );
 }

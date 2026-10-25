@@ -51,9 +51,21 @@ export const Card = styled.figure`
   min-width: 0;
   flex: 0 0 calc((100% - (var(--visible) - 1) * var(--gap)) / var(--visible));
 `;
-export const Image = styled.img`
+export const ImageButton = styled.button`
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: #072c22;
+  cursor: zoom-in;
+  &:focus-visible {
+    outline-offset: -5px;
+  }
+`;
+export const Image = styled.img<{ $position: string }>`
   height: clamp(240px, min(30vw, 40svh), 440px);
   object-fit: cover;
+  object-position: ${({ $position }) => $position};
   border: 1px solid #ddd5b9;
   @media (max-width: 600px) {
     height: auto;
