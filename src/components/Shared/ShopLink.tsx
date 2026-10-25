@@ -8,7 +8,8 @@ export default function ShopLink({ children, ...props }: ShopLinkProps) {
     <a
       {...props}
       href={siteLinks.shop}
-      aria-disabled={!siteLinks.shop || undefined}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {children}
     </a>

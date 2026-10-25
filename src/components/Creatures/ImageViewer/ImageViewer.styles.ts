@@ -1,3 +1,4 @@
+import { Theme } from "../../../styles/Theme";
 import styled, { keyframes } from "styled-components";
 
 const appear = keyframes`
@@ -54,6 +55,8 @@ export const CloseButton = styled.button`
   color: #f0edde;
   &:hover {
     background: #194b3c;
+    color: ${Theme.colors.sage};
+    border-color: ${Theme.colors.sage};
   }
 `;
 export const Photo = styled.img`
@@ -88,7 +91,7 @@ export const PhotoArrow = styled.button<{ $side: "left" | "right" }>`
   border-radius: 4px;
   background: #032b25cc;
   color: #f0edde;
-  &:hover { background: #194b3c; border-color: #ded5be; }
+  &:hover { background: #194b3c; color: ${Theme.colors.sage}; border-color: ${Theme.colors.sage}; }
   @media (max-width: 600px) {
     ${({ $side }) => $side}: 6px;
     width: 44px;

@@ -1,3 +1,4 @@
+import { Theme } from "../../../styles/Theme";
 import styled, { keyframes } from "styled-components";
 
 const enter = keyframes`
@@ -49,7 +50,9 @@ export const MenuButton = styled.button`
   background: #032b2533;
   color: #f0edde;
   &:hover {
-    background: #f0edde14;
+    background: #b4c9ad14;
+    color: ${Theme.colors.sage};
+    border-color: ${Theme.colors.sage};
   }
 `;
 export const MenuDialog = styled.dialog`
@@ -110,7 +113,7 @@ export const MenuContent = styled.div`
     width: fit-content;
   }
   nav > a[aria-current="location"] {
-    color: #f5df9d;
+    color: #f0edde; font-weight: 500;
   }
   nav > a[aria-current="location"]::after {
     transform: scaleX(1);

@@ -1,3 +1,4 @@
+import { Theme } from "../../styles/Theme";
 import styled from "styled-components";
 import { LinkButton } from "../Shared/Button";
 export const CreaturesSection = styled.section`
@@ -98,9 +99,8 @@ export const Arrow = styled.button<{ $side: "left" | "right" }>`
     stroke: currentColor;
     stroke-width: 1.5;
   }
-  &:hover {
-    color: #dfc88f;
-  }
+  transition: color 180ms ease;
+  &:hover { color: ${Theme.colors.sage}; }
   @media (max-width: 900px) {
     ${({ $side }) => $side}: -39px;
     width: 36px;
@@ -146,5 +146,14 @@ export const ShopButton = styled(LinkButton)`
   background: #f0edde;
   color: #00382b;
   border-color: #f0edde;
-  &:hover { background: #fff6dd; color: #00382b; border-color: #fff6dd; }
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  &:hover, &:focus-visible {
+    background: ${Theme.colors.sage};
+    color: #00382b;
+    border-color: ${Theme.colors.sage};
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px #001c194d;
+  }
+  &:active { transform: translateY(0); box-shadow: none; }
+  @media (prefers-reduced-motion: reduce) { &:hover, &:focus-visible { transform: none; } }
 `;

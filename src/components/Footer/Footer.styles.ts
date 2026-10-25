@@ -1,3 +1,4 @@
+import { Theme } from "../../styles/Theme";
 import styled from "styled-components";
 export const FooterSection = styled.footer`
   min-height: 145px;
@@ -18,13 +19,15 @@ export const FooterLinks = styled.nav`
   gap: 34px;
   margin-top: 4px;
   font-size: 22px;
+  a, button { transition: color 180ms ease; }
   button {
     border: 0;
     background: none;
     padding: 0;
   }
-  a:hover,
+  a[href]:hover,
   button:hover {
+    color: ${Theme.colors.sage};
     text-decoration: underline;
     text-underline-offset: 5px;
   }

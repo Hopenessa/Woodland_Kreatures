@@ -1,3 +1,4 @@
+import { Theme } from "../../styles/Theme";
 import styled, { keyframes } from "styled-components";
 export const HeaderWrapper = styled.header`
   position: absolute;
@@ -35,6 +36,8 @@ export const Navigation = styled.nav`
     transform: scaleX(0);
     transition: transform 180ms ease;
   }
+  a[href]:hover { color: ${Theme.colors.sage}; }
+  a { transition: color 180ms ease; }
   a:hover::after {
     transform: scaleX(1);
   }
@@ -78,7 +81,7 @@ export const CompactInner = styled.div`
     line-height: 1;
     gap: 24px;
     & > a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 7px; }
-    & > a[aria-current="location"] { color: #f5df9d; }
+    & > a[aria-current="location"] { color: #f0edde; font-weight: 500; }
     & > a[aria-current="location"]::after { transform: scaleX(1); bottom: 2px; }
 
   }

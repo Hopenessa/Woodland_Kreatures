@@ -3,6 +3,7 @@ export const Theme = {
     forest: "#00382b",
     night: "#061c2b",
     cream: "#f0edde",
+    sage: "#b4c9ad",
     border: "#d9d2b7",
   },
   media: {

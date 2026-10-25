@@ -1,3 +1,4 @@
+import { Theme } from "../../styles/Theme";
 import styled, { keyframes } from "styled-components";
 
 const appear = keyframes`
@@ -26,7 +27,8 @@ export const GoTopLink = styled.a`
     border-color 180ms ease;
   &:hover {
     background: #154638;
-    border-color: #f0edde;
+    border-color: ${Theme.colors.sage};
+    color: ${Theme.colors.sage};
   }
   @media (max-width: 600px) {
     right: 16px;

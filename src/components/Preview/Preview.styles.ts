@@ -1,3 +1,4 @@
+import { Theme } from "../../styles/Theme";
 import styled, { keyframes } from "styled-components";
 import background from "../../assets/images/background-forest.svg";
 import { LinkButton } from "../Shared/Button";
@@ -107,6 +108,7 @@ export const Introduction = styled.p`
   text-shadow: 0 1px 2px #00131e, 0 0 6px #031c29, 0 0 14px #031c29;
 `;
 export const HeroButton = styled(LinkButton)`
+  &:hover { color: ${Theme.colors.sage}; border-color: ${Theme.colors.sage}; }
   margin-top: 22px;
   min-width: 204px;
   font-size: clamp(20px, 1.9vw, 26px);
@@ -133,6 +135,7 @@ export const ScrollHint = styled.a`
   color: #e3e2cc;
   opacity: .8;
   svg { animation: ${driftDown} 2400ms ease-in-out infinite; }
-  &:hover { color: #fff4c9; }
+  transition: color 180ms ease;
+  &:hover { color: ${Theme.colors.sage}; }
   @media (prefers-reduced-motion: reduce) { svg { animation: none; } }
 `;

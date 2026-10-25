@@ -24,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
   h1, h2 { font-weight: 400; }
   img { display: block; width: 100%; }
   ::selection { background: #8eaa91; color: #031e18; }
-  :focus-visible { outline: 2px solid #e7d4a3; outline-offset: 6px; }
+  :focus-visible { outline: 2px solid #f0edde; outline-offset: 6px; }
   .skip-link { position: fixed; top: 10px; left: 10px; transform: translateY(-180%); z-index: 30; padding: 12px 20px; background: #00382b; }
   .skip-link:focus { transform: translateY(0); }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
