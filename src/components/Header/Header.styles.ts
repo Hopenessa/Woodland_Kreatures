@@ -8,6 +8,7 @@ export const HeaderWrapper = styled.header`
   align-items: center;
   gap: 15px;
   padding: clamp(22px, 2.7vw, 42px) 20px 0;
+  @media (max-width: 800px) { display: none; }
 `;
 export const Brand = styled.a`
   text-transform: uppercase;
