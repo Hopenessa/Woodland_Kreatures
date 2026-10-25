@@ -33,11 +33,25 @@ export const creatures: Creature[] = [
     alt: "Avalon, a handmade woodland creature with pale curls, a blue pointed hat and a tiny silver lantern",
   },
   {
+    id: "aristotle-and-skye",
+    name: "Aristotle and Skye",
+    image: aristotleAndSkye,
+    position: "72% 35%",
+    alt: "Aristotle and Skye, a purple-haired handmade fairy sitting on a pearly pink dragon with translucent purple wings",
+  },
+  {
     id: "brenn",
     name: "Brenn",
     image: brenn,
     position: "50% 25%",
     alt: "Brenn, a handmade fairy in an amber outfit with colourful braids, translucent wings and a staff",
+  },
+  {
+    id: "kaida",
+    name: "Kaida",
+    image: kaida,
+    position: "50% 45%",
+    alt: "Kaida, a small handmade green dragon with purple wings and a little brown hat, sitting on moss",
   },
   {
     id: "cameo",
@@ -54,24 +68,10 @@ export const creatures: Creature[] = [
     alt: "Gelsey, a handmade fairy with pale hair, a stitched brown hat and outfit, and sparkling translucent wings",
   },
   {
-    id: "kaida",
-    name: "Kaida",
-    image: kaida,
-    position: "50% 45%",
-    alt: "Kaida, a small handmade green dragon with purple wings and a little brown hat, sitting on moss",
-  },
-  {
     id: "flannery",
     name: "Flannery",
     image: flannery,
     position: "50% 18%",
     alt: "Flannery, a handmade golden dragon with little horns, purple wings and a large dark key, sitting on moss",
-  },
-  {
-    id: "aristotle-and-skye",
-    name: "Aristotle and Skye",
-    image: aristotleAndSkye,
-    position: "72% 35%",
-    alt: "Aristotle and Skye, a purple-haired handmade fairy sitting on a pearly pink dragon with translucent purple wings",
   },
 ];
