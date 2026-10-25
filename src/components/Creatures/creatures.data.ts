@@ -19,11 +19,11 @@ export type Creature = {
 
 export const creatures: Creature[] = [
   {
-    id: "wispa",
-    name: "Wispa",
-    image: wispa,
-    position: "50% 18%",
-    alt: "Wispa, a handmade fairy with purple and gold braids, a grey pointed hat and delicate dark wings",
+    id: "cameo",
+    name: "Cameo",
+    image: cameo,
+    position: "50% 22%",
+    alt: "Cameo, a handmade fairy in a green pointed hat and coat, with translucent wings and a golden key",
   },
   {
     id: "avalon",
@@ -54,11 +54,11 @@ export const creatures: Creature[] = [
     alt: "Kaida, a small handmade green dragon with purple wings and a little brown hat, sitting on moss",
   },
   {
-    id: "cameo",
-    name: "Cameo",
-    image: cameo,
-    position: "50% 22%",
-    alt: "Cameo, a handmade fairy in a green pointed hat and coat, with translucent wings and a golden key",
+    id: "wispa",
+    name: "Wispa",
+    image: wispa,
+    position: "50% 18%",
+    alt: "Wispa, a handmade fairy with purple and gold braids, a grey pointed hat and delicate dark wings",
   },
   {
     id: "gelsey",
