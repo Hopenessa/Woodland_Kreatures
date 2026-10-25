@@ -28,7 +28,7 @@ export const ArtistContainer = styled(Container)`
 export const Portrait = styled.img`
   height: auto;
   border: 1px solid #ded5be;
-  aspect-ratio: 0.98;
+  aspect-ratio: 1;
   object-fit: cover;
   @media (max-width: 700px) {
     max-width: 360px;
@@ -58,4 +58,11 @@ export const Text = styled.p`
       display: none;
     }
   }
+`;
+
+export const ArtistRole = styled.p`
+  margin: 0 0 18px;
+  color: #d9d2b7;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.35;
 `;
