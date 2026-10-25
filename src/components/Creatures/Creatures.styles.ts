@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { LinkButton } from "../Shared/Button";
 export const CreaturesSection = styled.section`
   padding: 21px 0 44px;
   background: radial-gradient(
@@ -135,4 +136,15 @@ export const Invitation = styled.p`
   color: #dce1d2;
   font-size: clamp(20px, 2vw, 26px);
   line-height: 1.4;
+`;
+
+export const SectionDivider = styled.div`
+  margin: 0 auto 12px;
+`;
+export const ShopButton = styled(LinkButton)`
+  font-weight: 600;
+  background: #f0edde;
+  color: #00382b;
+  border-color: #f0edde;
+  &:hover { background: #fff6dd; color: #00382b; border-color: #fff6dd; }
 `;

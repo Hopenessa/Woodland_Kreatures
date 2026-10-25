@@ -11,25 +11,7 @@ import {
   HeroButton,
   ScrollHint,
 } from "./Preview.styles";
-import Moon from "../Shared/Moon";
-function Branch() {
-  return (
-    <svg
-      width="67"
-      height="20"
-      viewBox="0 0 67 20"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M0 10h64M33 10l-7-5m16 5-7 5m10-5-7-7m15 7-7 5m10-5-6-6m11 6-5 3"
-        stroke="currentColor"
-        strokeWidth=".9"
-      />
-      <path d="m59 7 5 3-5 3" stroke="currentColor" strokeWidth=".9" />
-    </svg>
-  );
-}
+import WoodlandDivider from "../Shared/WoodlandDivider/WoodlandDivider";
 export default function Preview() {
   const scene = useRef<HTMLElement>(null);
   const [assetsReady, setAssetsReady] = useState(false);
@@ -87,13 +69,7 @@ export default function Preview() {
           <br />
           things live
         </Title>
-        <Ornament>
-          <Branch />
-          <Moon size={25} />
-          <span>
-            <Branch />
-          </span>
-        </Ornament>
+        <Ornament><WoodlandDivider /></Ornament>
         <Subtitle>Handcrafted art dolls &amp; woodland spirits</Subtitle>
         <Introduction>
           Inspired by forgotten forests and the quiet magic of nature, I create

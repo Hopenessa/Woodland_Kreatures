@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "../Shared/Container";
-import { LinkButton } from "../Shared/Button";
+import WoodlandDivider from "../Shared/WoodlandDivider/WoodlandDivider";
 import ShopLink from "../Shared/ShopLink";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { creatures, type Creature } from "./creatures.data";
@@ -8,6 +8,8 @@ import ImageViewer from "./ImageViewer/ImageViewer";
 import {
   CreaturesSection,
   Title,
+  SectionDivider,
+  ShopButton,
   Introduction,
   Invitation,
   Gallery,
@@ -132,6 +134,7 @@ export default function Creatures() {
   return (
     <CreaturesSection id="creatures">
       <Container>
+        <SectionDivider><WoodlandDivider /></SectionDivider>
         <Title>The Creatures</Title>
         <Introduction>
           A selection of my creations — each with a little soul and a story of
@@ -234,7 +237,7 @@ export default function Creatures() {
             Looking for a woodland companion? Step into my shop and meet the
             creatures waiting for a home.
           </Invitation>
-          <LinkButton as={ShopLink}>Visit the shop</LinkButton>
+          <ShopButton as={ShopLink}>Visit the shop</ShopButton>
         </Controls>
       </Container>
       {selected && (
