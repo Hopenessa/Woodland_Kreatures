@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
   button { font: inherit; color: inherit; }
   a { color: inherit; text-decoration: none; }
   a[aria-disabled="true"] { cursor: default; }
-  @media (max-width: 700px) { html { scroll-padding-top: 108px; } }
+  @media (max-width: 800px) { html { scroll-padding-top: 118px; } }
   button, a { touch-action: manipulation; }
   button { cursor: pointer; }
   h1, h2, p, figure { margin: 0; }

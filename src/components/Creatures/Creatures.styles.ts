@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const CreaturesSection = styled.section`
-  padding: 21px 0 24px;
+  padding: 21px 0 44px;
   background: radial-gradient(
     ellipse at 50% 35%,
     #004331 0%,
@@ -8,7 +8,7 @@ export const CreaturesSection = styled.section`
     #003326 100%
   );
   @media (max-width: 600px) {
-    padding-block: 30px;
+    padding: 30px 0 50px;
   }
 `;
 export const Title = styled.h2`

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Container } from "../Shared/Container";
 export const ArtistSection = styled.section`
-  padding-block: 30px;
+  padding-block: 50px;
   background:
     radial-gradient(ellipse at 14% 65%, #0d3147aa, transparent 55%),
     radial-gradient(ellipse at 95% 30%, #12344899, transparent 55%), #061a29;

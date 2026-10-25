@@ -67,13 +67,21 @@ export const CompactInner = styled.div`
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    font-size: 16px;
+    font-size: 18px;
+    line-height: 1;
+    min-height: 44px;
+    span { transform: translateY(2px); }
   }
   ${Navigation} {
-    font-size: 20px;
-    gap: 28px;
+    font-size: 22px;
+    line-height: 1;
+    gap: 24px;
+    & > a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 7px; }
+    & > a[aria-current="location"] { color: #f5df9d; }
+    & > a[aria-current="location"]::after { transform: scaleX(1); bottom: 2px; }
+
   }
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     width: calc(100% - 32px);
     min-height: 88px;
     padding-block: 10px;
@@ -81,8 +89,9 @@ export const CompactInner = styled.div`
     justify-content: center;
     gap: 7px;
     ${Brand} {
-      font-size: 13px;
+      font-size: 14px;
       gap: 8px;
+      min-height: 20px;
     }
     ${Brand} svg {
       width: 16px;
@@ -90,7 +99,24 @@ export const CompactInner = styled.div`
     }
     ${Navigation} {
       font-size: 18px;
-      gap: 24px;
+      gap: clamp(10px, 4vw, 18px);
+      & > a { padding-block: 5px; }
     }
+  }
+`;
+
+export const ShopEntry = styled.span`
+  display: inline-flex;
+  align-items: center;
+  border-left: 1px solid #d9d2b74d;
+  padding-left: 22px;
+  margin-left: 2px;
+  a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding-block: 7px; }
+  a::after { display: none; }
+  @media (max-width: 800px) {
+    padding-left: 14px;
+    margin-left: 0;
+    a { gap: 5px; padding-block: 5px; }
+    svg { width: 13px; height: 13px; }
   }
 `;

@@ -29,14 +29,14 @@ export const Content = styled.div<{ $revealed: boolean }>`
   z-index: 1;
   & > * {
     visibility: ${({ $revealed }) => $revealed ? "visible" : "hidden"};
-    animation: ${appearFromAbove} 1400ms cubic-bezier(.25, .46, .45, .94) both;
+    animation: ${appearFromAbove} 1134ms cubic-bezier(.25, .46, .45, .94) both;
     animation-play-state: ${({ $revealed }) => $revealed ? "running" : "paused"};
   }
   /* Opacity animates visually while the h1 stays in the accessibility tree. */
   & > h1 { visibility: visible; }
-  & > :nth-child(2) { animation-delay: 180ms; }
-  & > :nth-child(3) { animation-delay: 360ms; }
-  & > :nth-child(4) { animation-delay: 540ms; }
+  & > :nth-child(2) { animation-delay: 146ms; }
+  & > :nth-child(3) { animation-delay: 292ms; }
+  & > :nth-child(4) { animation-delay: 437ms; }
   @media (prefers-reduced-motion: reduce) {
     & > * { visibility: visible; opacity: 1; transform: none; }
   }

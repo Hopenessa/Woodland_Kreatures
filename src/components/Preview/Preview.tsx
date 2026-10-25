@@ -55,7 +55,7 @@ export default function Preview() {
         secondFrame = requestAnimationFrame(() => {
           startTimer = window.setTimeout(() => {
             if (!cancelled) setAssetsReady(true);
-          }, 180);
+          }, 146);
         });
       });
     });
