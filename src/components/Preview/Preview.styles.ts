@@ -26,6 +26,20 @@ export const Content = styled.div<{ $revealed: boolean }>`
   padding: 130px 22px;
   position: relative;
   z-index: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 40px -100px;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(2, 21, 32, .84) 0%,
+      rgba(2, 21, 32, .7) 34%,
+      rgba(2, 21, 32, .32) 57%,
+      rgba(2, 21, 32, 0) 76%
+    );
+  }
   & > * {
     visibility: ${({ $revealed }) => $revealed ? "visible" : "hidden"};
     animation: ${appearFromAbove} 1134ms cubic-bezier(.25, .46, .45, .94) both;
@@ -47,6 +61,7 @@ export const Content = styled.div<{ $revealed: boolean }>`
   @media (max-width: 600px) {
     padding-top: 110px;
     padding-bottom: 110px;
+    &::before { inset: 36px -36px; }
   }
 `;
 export const Title = styled.h1`
