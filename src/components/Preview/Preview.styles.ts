@@ -54,13 +54,13 @@ export const Title = styled.h1`
   font-size: clamp(47px, 5.2vw, 76px);
   line-height: 0.96;
   letter-spacing: -0.025em;
-  -webkit-text-stroke: 0.6px #0a0e39;
+  -webkit-text-stroke: 0.45px #031c29;
   paint-order: stroke fill;
   text-shadow:
-    0 0 4px #0a0e39,
-    0 0 12px #0a0e39,
-    0 0 12px #0a0e39,
-    0 0 24px #0a0e39;
+    0 1px 2px #00131e,
+    0 0 6px #031c29,
+    0 0 14px #031c29,
+    0 0 28px rgba(3, 28, 41, .9);
   @media (max-width: 600px) {
     font-size: clamp(43px, 10.4vw, 60px);
     line-height: 1.04;
@@ -81,16 +81,16 @@ export const Ornament = styled.div`
 export const Subtitle = styled.p`
   font-size: clamp(21px, 2.2vw, 30px);
   line-height: 1.3;
-  text-shadow: 0 1px 12px #001421;
+  text-shadow: 0 1px 2px #00131e, 0 0 8px #031c29, 0 0 18px #031c29;
 `;
 export const Introduction = styled.p`
   max-width: 580px;
   margin: 18px auto 0;
-  color: #e1e2d2;
+  color: #ecebdd;
   font-size: clamp(19px, 1.65vw, 23px);
   line-height: 1.45;
   text-wrap: pretty;
-  text-shadow: 0 0 6px #0a0e39, 0 0 16px #031c29;
+  text-shadow: 0 1px 2px #00131e, 0 0 6px #031c29, 0 0 14px #031c29;
 `;
 export const HeroButton = styled(LinkButton)`
   margin-top: 22px;
