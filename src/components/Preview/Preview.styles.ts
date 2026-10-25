@@ -23,7 +23,7 @@ export const PreviewSection = styled.section`
   }
 `;
 export const Content = styled.div<{ $revealed: boolean }>`
-  padding: 130px 22px 58px;
+  padding: 130px 22px;
   position: relative;
   z-index: 1;
   & > * {
@@ -37,17 +37,16 @@ export const Content = styled.div<{ $revealed: boolean }>`
   & > :nth-child(3) { animation-delay: 292ms; }
   & > :nth-child(4) { animation-delay: 437ms; }
   & > :nth-child(5) { animation-delay: 583ms; }
-  & > :nth-child(6) { animation-delay: 729ms; }
   @media (prefers-reduced-motion: reduce) {
     & > * { visibility: visible; opacity: 1; transform: none; }
   }
   @media (min-width: 1200px) {
     padding-top: 155px;
-    padding-bottom: 75px;
+    padding-bottom: 155px;
   }
   @media (max-width: 600px) {
-    padding-top: 150px;
-    padding-bottom: 70px;
+    padding-top: 110px;
+    padding-bottom: 110px;
   }
 `;
 export const Title = styled.h1`
@@ -109,7 +108,13 @@ export const ScrollHint = styled.a`
   justify-content: center;
   width: 44px;
   height: 44px;
-  margin: 20px auto 0;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  margin: 0;
+  @media (min-width: 801px) { bottom: clamp(28px, 4svh, 44px); }
   color: #e3e2cc;
   opacity: .8;
   svg { animation: ${driftDown} 2400ms ease-in-out infinite; }

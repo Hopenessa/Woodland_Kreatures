@@ -101,10 +101,10 @@ export default function Preview() {
           Perhaps one of them is waiting for you.
         </Introduction>
         <HeroButton href="#creatures">Meet the creatures</HeroButton>
-        <ScrollHint href="#creatures" aria-label="Scroll down to the creatures">
-          <svg width="24" height="34" viewBox="0 0 24 34" fill="none" aria-hidden="true"><path d="M12 4v23m-7-7 7 7 7-7" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-        </ScrollHint>
       </Content>
+      <ScrollHint href="#creatures" aria-label="Scroll down to the creatures">
+          <svg width="24" height="34" viewBox="0 0 24 34" fill="none" aria-hidden="true"><path d="M12 4v23m-7-7 7 7 7-7" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </ScrollHint>
     </PreviewSection>
   );
 }

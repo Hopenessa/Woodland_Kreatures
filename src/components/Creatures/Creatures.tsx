@@ -23,6 +23,7 @@ import {
 
 const CLONES = 3;
 const SLIDE_INTERVAL = 4000;
+const MANUAL_PAUSE = 5000;
 // Clones let the track cross either end before resetting invisibly.
 const slides = [
   ...creatures.slice(-CLONES),
@@ -34,6 +35,7 @@ export default function Creatures() {
   const [selected, setSelected] = useState<Creature | null>(null);
   const opener = useRef<HTMLButtonElement | null>(null);
   const [slide, setSlide] = useState({ index: CLONES, animated: false });
+  const [lastInteraction, setLastInteraction] = useState<number | null>(null);
   const [inView, setInView] = useState(false);
   const [pageVisible, setPageVisible] = useState(!document.hidden);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -91,20 +93,34 @@ export default function Creatures() {
     return () => document.removeEventListener("visibilitychange", update);
   }, []);
 
+  const manualMove = (direction: number) => {
+    setLastInteraction(Date.now());
+    move(direction);
+  };
+
   useEffect(() => {
     if (selected || !inView || !pageVisible || reducedMotion) return;
-    const timer = window.setInterval(() => {
+    let timer = 0;
+    let nextSlideAt = lastInteraction === null
+      ? Date.now() + SLIDE_INTERVAL
+      : Math.max(Date.now(), lastInteraction + MANUAL_PAUSE);
+
+    const tick = () => {
       const gallery = galleryRef.current;
-      if (
-        !gallery ||
-        gallery.matches(":hover") ||
-        gallery.contains(document.activeElement)
-      )
-        return;
-      move(1);
-    }, SLIDE_INTERVAL);
-    return () => window.clearInterval(timer);
-  }, [selected, inView, pageVisible, reducedMotion, move]);
+      if (!gallery) return;
+      // A focused or hovered photograph stays still for inspection. A navigation
+      // arrow retaining focus must not permanently disable autoplay.
+      const inspecting = [...gallery.querySelectorAll<HTMLButtonElement>("button[data-creature-id]")]
+        .some(button => button.matches(":hover") || button.contains(document.activeElement));
+      if (!inspecting && Date.now() >= nextSlideAt) {
+        move(1);
+        nextSlideAt = Date.now() + SLIDE_INTERVAL;
+      }
+      timer = window.setTimeout(tick, Math.max(100, inspecting ? 250 : nextSlideAt - Date.now()));
+    };
+    timer = window.setTimeout(tick, Math.max(0, nextSlideAt - Date.now()));
+    return () => window.clearTimeout(timer);
+  }, [selected, inView, pageVisible, reducedMotion, move, lastInteraction]);
 
   useEffect(() => {
     if (!slide.animated) return;
@@ -140,14 +156,14 @@ export default function Creatures() {
           onKeyDown={(event) => {
             if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
               event.preventDefault();
-              move(event.key === "ArrowLeft" ? -1 : 1);
+              manualMove(event.key === "ArrowLeft" ? -1 : 1);
             }
           }}
         >
           <Arrow
             type="button"
             $side="left"
-            onClick={() => move(-1)}
+            onClick={() => manualMove(-1)}
             aria-label="Previous creatures"
           >
             <svg viewBox="0 0 24 44" aria-hidden="true">
@@ -205,7 +221,7 @@ export default function Creatures() {
           <Arrow
             type="button"
             $side="right"
-            onClick={() => move(1)}
+            onClick={() => manualMove(1)}
             aria-label="Next creatures"
           >
             <svg viewBox="0 0 24 44" aria-hidden="true">
