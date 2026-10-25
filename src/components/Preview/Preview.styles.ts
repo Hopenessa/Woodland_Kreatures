@@ -37,6 +37,7 @@ export const Content = styled.div<{ $revealed: boolean }>`
   & > :nth-child(3) { animation-delay: 292ms; }
   & > :nth-child(4) { animation-delay: 437ms; }
   & > :nth-child(5) { animation-delay: 583ms; }
+  & > :nth-child(6) { animation-delay: 729ms; }
   @media (prefers-reduced-motion: reduce) {
     & > * { visibility: visible; opacity: 1; transform: none; }
   }
@@ -95,4 +96,23 @@ export const HeroButton = styled(LinkButton)`
   margin-top: 22px;
   min-width: 204px;
   font-size: clamp(20px, 1.9vw, 26px);
+`;
+
+const driftDown = keyframes`
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+`;
+
+export const ScrollHint = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 20px auto 0;
+  color: #e3e2cc;
+  opacity: .8;
+  svg { animation: ${driftDown} 2400ms ease-in-out infinite; }
+  &:hover { color: #fff4c9; }
+  @media (prefers-reduced-motion: reduce) { svg { animation: none; } }
 `;

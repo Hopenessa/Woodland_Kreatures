@@ -8,14 +8,17 @@ const appear = keyframes`
 export const Viewer = styled.dialog`
   position: fixed;
   inset: 0;
-  margin: 0;
-  width: 100%;
-  max-width: none;
-  height: 100dvh;
-  max-height: none;
-  padding: 60px 64px 24px;
-  border: 0;
-  background: #001912ed;
+  margin: auto;
+  width: fit-content;
+  min-width: min(500px, calc(100vw - 64px));
+  max-width: min(1100px, calc(100% - 64px));
+  height: auto;
+  max-height: calc(100dvh - 96px);
+  padding: 56px 68px 22px;
+  border: 1px solid #ded5be88;
+  border-radius: 4px;
+  box-shadow: 0 20px 80px #00110e80;
+  background: #052920f5;
   color: #f0edde;
   overflow-y: auto;
   &[open] {
@@ -27,16 +30,20 @@ export const Viewer = styled.dialog`
     animation: ${appear} 180ms ease both;
   }
   &::backdrop {
-    background: #00120ee6;
+    background: #00120e80;
   }
   @media (max-width: 600px) {
-    padding: 66px 18px max(24px, env(safe-area-inset-bottom));
+    width: calc(100% - 24px);
+    min-width: 0;
+    max-width: none;
+    max-height: calc(100dvh - 32px);
+    padding: 54px 44px 20px;
   }
 `;
 export const CloseButton = styled.button`
-  position: fixed;
-  top: max(14px, env(safe-area-inset-top));
-  right: max(18px, env(safe-area-inset-right));
+  position: absolute;
+  top: 10px;
+  right: 10px;
   display: grid;
   place-items: center;
   width: 44px;
@@ -54,7 +61,7 @@ export const Photo = styled.img`
   width: auto;
   height: auto;
   max-width: min(100%, 1400px);
-  max-height: calc(100dvh - 140px);
+  max-height: min(66dvh, calc(100dvh - 210px));
   object-fit: contain;
   flex: 0 1 auto;
   min-height: 0;
@@ -68,7 +75,7 @@ export const Caption = styled.p`
 `;
 
 export const PhotoArrow = styled.button<{ $side: "left" | "right" }>`
-  position: fixed;
+  position: absolute;
   top: 50%;
   ${({ $side }) => $side}: 14px;
   transform: translateY(-50%);
