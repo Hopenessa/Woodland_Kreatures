@@ -11,15 +11,14 @@ export const PreviewSection = styled.section`
   overflow: hidden;
   isolation: isolate;
   width: 100%;
-  min-height: 458px;
-  aspect-ratio: 1920 / 858;
+  min-height: 100vh;
+  min-height: 100svh;
   display: grid;
   place-items: center;
   text-align: center;
   background: #031c29 url(${background}) center bottom / cover no-repeat;
   @media (max-width: 600px) {
-    aspect-ratio: auto;
-    min-height: 620px;
+    min-height: max(620px, 100svh);
     background-position: 51% bottom;
   }
 `;
@@ -37,6 +36,7 @@ export const Content = styled.div<{ $revealed: boolean }>`
   & > :nth-child(2) { animation-delay: 146ms; }
   & > :nth-child(3) { animation-delay: 292ms; }
   & > :nth-child(4) { animation-delay: 437ms; }
+  & > :nth-child(5) { animation-delay: 583ms; }
   @media (prefers-reduced-motion: reduce) {
     & > * { visibility: visible; opacity: 1; transform: none; }
   }
@@ -81,6 +81,15 @@ export const Subtitle = styled.p`
   font-size: clamp(21px, 2.2vw, 30px);
   line-height: 1.3;
   text-shadow: 0 1px 12px #001421;
+`;
+export const Introduction = styled.p`
+  max-width: 580px;
+  margin: 18px auto 0;
+  color: #e1e2d2;
+  font-size: clamp(19px, 1.65vw, 23px);
+  line-height: 1.45;
+  text-wrap: pretty;
+  text-shadow: 0 0 6px #0a0e39, 0 0 16px #031c29;
 `;
 export const HeroButton = styled(LinkButton)`
   margin-top: 22px;

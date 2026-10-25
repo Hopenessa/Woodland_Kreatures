@@ -52,12 +52,12 @@ export const Card = styled.figure`
   flex: 0 0 calc((100% - (var(--visible) - 1) * var(--gap)) / var(--visible));
 `;
 export const Image = styled.img`
-  height: clamp(220px, min(28vw, 36svh), 400px);
+  height: clamp(240px, min(30vw, 40svh), 440px);
   object-fit: cover;
   border: 1px solid #ddd5b9;
   @media (max-width: 600px) {
     height: auto;
-    aspect-ratio: 280 / 324;
+    aspect-ratio: 280 / 350;
   }
 `;
 export const Name = styled.figcaption`

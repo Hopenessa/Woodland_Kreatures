@@ -7,6 +7,7 @@ import {
   Title,
   Ornament,
   Subtitle,
+  Introduction,
   HeroButton,
 } from "./Preview.styles";
 import Moon from "../Shared/Moon";
@@ -93,6 +94,11 @@ export default function Preview() {
           </span>
         </Ornament>
         <Subtitle>Handcrafted art dolls &amp; woodland spirits</Subtitle>
+        <Introduction>
+          Inspired by forgotten forests and the quiet magic of nature, I create
+          one-of-a-kind creatures, each with a little soul and a story of its own.
+          Perhaps one of them is waiting for you.
+        </Introduction>
         <HeroButton href="#creatures">Meet the creatures</HeroButton>
       </Content>
     </PreviewSection>
