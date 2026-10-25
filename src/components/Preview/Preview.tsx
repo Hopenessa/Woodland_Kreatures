@@ -1,0 +1,100 @@
+import { useEffect, useRef, useState } from "react";
+import background from "../../assets/images/background-forest.svg";
+import Fireflies from "./Fireflies";
+import {
+  PreviewSection,
+  Content,
+  Title,
+  Ornament,
+  Subtitle,
+  HeroButton,
+} from "./Preview.styles";
+import Moon from "../Shared/Moon";
+function Branch() {
+  return (
+    <svg
+      width="67"
+      height="20"
+      viewBox="0 0 67 20"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M0 10h64M33 10l-7-5m16 5-7 5m10-5-7-7m15 7-7 5m10-5-6-6m11 6-5 3"
+        stroke="currentColor"
+        strokeWidth=".9"
+      />
+      <path d="m59 7 5 3-5 3" stroke="currentColor" strokeWidth=".9" />
+    </svg>
+  );
+}
+export default function Preview() {
+  const scene = useRef<HTMLElement>(null);
+  const [assetsReady, setAssetsReady] = useState(false);
+  const [entered, setEntered] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    let firstFrame = 0;
+    let secondFrame = 0;
+    let startTimer = 0;
+    const image = new Image();
+    image.src = background;
+    // Start after the actual hero assets are ready, rather than during loading.
+    // A bounded wait keeps the text available if an asset is slow or fails.
+    let timeout = 0;
+    const fallback = new Promise<void>(resolve => { timeout = window.setTimeout(resolve, 2500); });
+    const assets = Promise.allSettled([
+      image.decode(),
+      document.fonts.load('400 52px "Cormorant Garamond"'),
+    ]);
+    void Promise.race([assets, fallback]).then(() => {
+      window.clearTimeout(timeout);
+      if (cancelled) return;
+      firstFrame = requestAnimationFrame(() => {
+        secondFrame = requestAnimationFrame(() => {
+          startTimer = window.setTimeout(() => {
+            if (!cancelled) setAssetsReady(true);
+          }, 180);
+        });
+      });
+    });
+    const element = scene.current;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setEntered(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+    if (element) observer.observe(element);
+    return () => {
+      cancelled = true;
+      observer.disconnect();
+      window.clearTimeout(timeout);
+      window.clearTimeout(startTimer);
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame);
+    };
+  }, []);
+  return (
+    <PreviewSection id="home" ref={scene}>
+      <Fireflies scene={scene} />
+      <Content $revealed={assetsReady && entered}>
+        <Title>
+          Where the hidden
+          <br />
+          things live
+        </Title>
+        <Ornament>
+          <Branch />
+          <Moon size={25} />
+          <span>
+            <Branch />
+          </span>
+        </Ornament>
+        <Subtitle>Handcrafted art dolls &amp; woodland spirits</Subtitle>
+        <HeroButton href="#creatures">Meet the creatures</HeroButton>
+      </Content>
+    </PreviewSection>
+  );
+}
