@@ -6,7 +6,7 @@ export const FooterSection = styled.footer`
   flex-direction: column;
   align-items: center;
   gap: 9px;
-  background: radial-gradient(ellipse at center top, #00402e, #003326);
+  background: linear-gradient(110deg, #032b25, #071f2a);
 `;
 export const FooterBrand = styled.a`
   text-transform: uppercase;
