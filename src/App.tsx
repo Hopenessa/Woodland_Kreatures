@@ -12,6 +12,26 @@ import GoTopButton from "./components/GoTopButton/GoTopButton";
 
 export default function App() {
   useLayoutEffect(() => {
+    const navigateToSection = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const link = event.target instanceof Element
+        ? event.target.closest<HTMLAnchorElement>('a[href^="#"]')
+        : null;
+      if (!link || link.hasAttribute("download") || (link.target && link.target !== "_self")) return;
+      const id = link.getAttribute("href")?.slice(1);
+      const destination = id ? document.getElementById(id) : null;
+      if (!destination) return;
+      event.preventDefault();
+      destination.scrollIntoView({ block: "start" });
+      // Move keyboard/screen-reader focus along with the visual navigation.
+      if (!destination.hasAttribute("tabindex")) destination.tabIndex = -1;
+      destination.focus({ preventScroll: true });
+    };
+    document.addEventListener("click", navigateToSection);
+    return () => document.removeEventListener("click", navigateToSection);
+  }, []);
+
+  useLayoutEffect(() => {
     let frame = 0;
     let interacted = false;
     const stopResetting = () => { interacted = true; };
