@@ -12,7 +12,7 @@ import {
   ShopEntry,
 } from "./Header.styles";
 
-type SectionId = "home" | "creatures" | "artist";
+type SectionId = "home" | "creatures" | "artist" | "contact";
 
 function Menu({ label, active }: { label: string; active?: SectionId }) {
   return (
@@ -32,6 +32,7 @@ function Menu({ label, active }: { label: string; active?: SectionId }) {
       >
         The Artist
       </a>
+      <a href="#contact" aria-current={active === "contact" ? "location" : undefined}>Contact</a>
       {active === undefined ? (
         <ShopLink>Shop</ShopLink>
       ) : (
@@ -76,7 +77,7 @@ export default function Header() {
         Math.min(window.innerHeight * 0.4, 360),
       );
       let current: SectionId = "home";
-      for (const id of ["creatures", "artist"] as const) {
+      for (const id of ["creatures", "artist", "contact"] as const) {
         if (
           (document.getElementById(id)?.getBoundingClientRect().top ??
             Infinity) <= marker
@@ -89,7 +90,7 @@ export default function Header() {
         window.scrollY + window.innerHeight >=
           document.documentElement.scrollHeight - 2
       ) {
-        current = "artist";
+        current = "contact";
       }
       setActive(current);
     };
@@ -143,3 +144,5 @@ export default function Header() {
     </>
   );
 }
+
+

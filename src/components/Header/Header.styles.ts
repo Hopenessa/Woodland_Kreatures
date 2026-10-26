@@ -85,6 +85,12 @@ export const CompactInner = styled.div`
     & > a[aria-current="location"]::after { transform: scaleX(1); bottom: 2px; }
 
   }
+  @media (min-width: 801px) and (max-width: 1100px) {
+    width: calc(100% - 40px);
+    gap: 18px;
+    ${Brand} { font-size: 14px; letter-spacing: .12em; gap: 8px; }
+    ${Navigation} { font-size: 20px; gap: 16px; }
+  }
   @media (max-width: 800px) {
     width: calc(100% - 32px);
     min-height: 88px;
