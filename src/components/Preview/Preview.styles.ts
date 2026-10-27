@@ -46,7 +46,6 @@ export const Content = styled.div<{ $revealed: boolean }>`
     animation: ${appearFromAbove} 1134ms cubic-bezier(.25, .46, .45, .94) both;
     animation-play-state: ${({ $revealed }) => $revealed ? "running" : "paused"};
   }
-  /* Opacity animates visually while the h1 stays in the accessibility tree. */
   & > h1 { visibility: visible; }
   & > :nth-child(2) { animation-delay: 146ms; }
   & > :nth-child(3) { animation-delay: 292ms; }

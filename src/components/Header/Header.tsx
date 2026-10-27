@@ -71,7 +71,6 @@ export default function Header() {
     let frame = 0;
     const update = () => {
       frame = 0;
-      // Switch as the next section enters the upper 40% of the viewport.
       const marker = Math.max(
         window.innerWidth <= 800 ? 150 : 140,
         Math.min(window.innerHeight * 0.4, 360),
@@ -84,7 +83,6 @@ export default function Header() {
         )
           current = id;
       }
-      // The last section may not reach the marker on a tall viewport.
       if (
         window.scrollY > 0 &&
         window.scrollY + window.innerHeight >=
@@ -144,5 +142,3 @@ export default function Header() {
     </>
   );
 }
-
-

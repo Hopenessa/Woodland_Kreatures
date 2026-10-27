@@ -19,5 +19,3 @@ export const Copyright = styled.p`
   max-width: 400px;
   color: #d9d2b7;
 `;
-
-

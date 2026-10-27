@@ -24,8 +24,6 @@ export default function Preview() {
     let startTimer = 0;
     const image = new Image();
     image.src = background;
-    // Start after the actual hero assets are ready, rather than during loading.
-    // A bounded wait keeps the text available if an asset is slow or fails.
     let timeout = 0;
     const fallback = new Promise<void>(resolve => { timeout = window.setTimeout(resolve, 2500); });
     const assets = Promise.allSettled([

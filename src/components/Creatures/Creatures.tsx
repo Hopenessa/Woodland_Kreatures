@@ -26,7 +26,6 @@ import {
 const CLONES = 3;
 const SLIDE_INTERVAL = 4000;
 const MANUAL_PAUSE = 5000;
-// Clones let the track cross either end before resetting invisibly.
 const slides = [
   ...creatures.slice(-CLONES),
   ...creatures,
@@ -110,8 +109,6 @@ export default function Creatures() {
     const tick = () => {
       const gallery = galleryRef.current;
       if (!gallery) return;
-      // A focused or hovered photograph stays still for inspection. A navigation
-      // arrow retaining focus must not permanently disable autoplay.
       const inspecting = [...gallery.querySelectorAll<HTMLButtonElement>("button[data-creature-id]")]
         .some(button => button.matches(":hover") || button.contains(document.activeElement));
       if (!inspecting && Date.now() >= nextSlideAt) {
@@ -126,7 +123,6 @@ export default function Creatures() {
 
   useEffect(() => {
     if (!slide.animated) return;
-    // Recover even if a browser cancels transitionend (e.g. a hidden tab).
     const fallback = window.setTimeout(finishSlide, 850);
     return () => window.clearTimeout(fallback);
   }, [slide, finishSlide]);

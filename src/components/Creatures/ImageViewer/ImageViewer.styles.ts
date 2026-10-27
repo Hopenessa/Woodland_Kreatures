@@ -38,7 +38,7 @@ export const Viewer = styled.dialog`
     min-width: 0;
     max-width: none;
     max-height: calc(100dvh - 32px);
-    padding: 54px 44px 20px;
+    padding: 54px 60px 20px;
   }
 `;
 export const CloseButton = styled.button`

@@ -21,6 +21,3 @@ const outline = css`
 export const LinkButton = styled.a`
   ${outline}
 `;
-export const Button = styled.button`
-  ${outline}
-`;

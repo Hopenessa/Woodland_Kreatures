@@ -18,10 +18,9 @@ export default function Contact() {
         </Description>
         <ContactOptions aria-label="Contact Sandy">
           <ContactOption
-            as={siteLinks.instagram ? "a" : "div"}
-            href={siteLinks.instagram || undefined}
-            target={siteLinks.instagram ? "_blank" : undefined}
-            rel={siteLinks.instagram ? "noopener noreferrer" : undefined}
+            href={siteLinks.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" focusable="false">
               <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -31,8 +30,7 @@ export default function Contact() {
             <OptionTitle>Instagram</OptionTitle>
           </ContactOption>
           <ContactOption
-            as={siteLinks.email ? "a" : "div"}
-            href={siteLinks.email ? `mailto:${siteLinks.email}` : undefined}
+            href={`mailto:${siteLinks.email}`}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
               <rect x="2.5" y="4.5" width="19" height="15" rx="2" />

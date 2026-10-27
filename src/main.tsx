@@ -1,9 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-
-// Start each page load at the hero before section anchors are rendered.
-// In-page anchor navigation remains native and keeps its smooth scrolling.
 window.history.scrollRestoration = "manual";
 if (window.location.hash) {
   window.history.replaceState(

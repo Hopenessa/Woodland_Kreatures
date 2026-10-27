@@ -23,7 +23,6 @@ export default function App() {
       if (!destination) return;
       event.preventDefault();
       destination.scrollIntoView({ block: "start" });
-      // Move keyboard/screen-reader focus along with the visual navigation.
       if (!destination.hasAttribute("tabindex")) destination.tabIndex = -1;
       destination.focus({ preventScroll: true });
     };
@@ -37,7 +36,6 @@ export default function App() {
     const stopResetting = () => { interacted = true; };
     const resetScroll = () => {
       if (interacted) return;
-      // Browsers can restore both the scroll position and the focused anchor.
       const focused = document.activeElement;
       if (focused instanceof HTMLElement && focused !== document.body) {
         focused.blur();
@@ -52,7 +50,6 @@ export default function App() {
     frame = requestAnimationFrame(resetScroll);
     window.addEventListener("load", afterLoad, { once: true });
     window.addEventListener("pageshow", afterLoad);
-    // Never pull the visitor back after they have started navigating.
     const interactions = ["pointerdown", "keydown", "wheel", "touchstart"] as const;
     interactions.forEach(event => window.addEventListener(event, stopResetting, { passive: true }));
     return () => {

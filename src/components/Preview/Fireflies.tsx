@@ -17,7 +17,6 @@ export default function Fireflies({
     const element = scene.current;
     if (!element) return;
     const resize = new ResizeObserver(([entry]) => {
-      // Match background-size: cover and background-position: center bottom.
       setScale(
         Math.max(
           entry.contentRect.width / 1920,

@@ -23,10 +23,10 @@ export const Gallery = styled.div`
   position: relative;
 `;
 export const Viewport = styled.div`
-  /* Keep thin borders away from the clip edge during fractional slide offsets. */
   padding: 4px;
   overflow: hidden;
   @media (max-width: 600px) {
+    width: calc(100% - 88px);
     max-width: 360px;
     margin-inline: auto;
   }
@@ -106,9 +106,9 @@ export const Arrow = styled.button<{ $side: "left" | "right" }>`
     width: 36px;
   }
   @media (max-width: 600px) {
-    ${({ $side }) => $side}: -22px;
-    width: 32px;
-    background: #00382bcc;
+    ${({ $side }) => $side}: 0;
+    width: 36px;
+    padding-inline: 6px;
     z-index: 1;
   }
 `;
